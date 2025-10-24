@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Home;
+use App\Models\Book;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -10,10 +11,29 @@ class HomeController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public function index()
+    {
+        // resources/views/pages/HomePage.blade.php-ийг дуудаж байна
+        return view('pages.HomePage');
+    }
+    public function book()
+    {
+        $books = Book::latest()->paginate(12); // эсвэл Book::all() гэх мэт
+        return view('pages.Book', compact('books'));
+    }
     public function home()
     {
-        return view('home');
-        
+        return view('HomePage');
+    }
+
+    public function service()
+    {
+    return view('pages.service');
+    }
+
+    public function subscription()
+    {
+        return view('pages.subscription');
     }
 
     /**

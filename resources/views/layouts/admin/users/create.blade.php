@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+{{-- @extends('layouts.admin')
 
 @section('title', 'Шинэ хэрэглэгч')
 
@@ -48,4 +48,4 @@
         </button>
     </form>
 </div>
-@endsection
+@endsection --}}

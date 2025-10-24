@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Book;
+use Illuminate\Support\Facades\Storage;
 
 class BookController extends Controller
 {
@@ -32,14 +32,8 @@ class BookController extends Controller
             'description' => 'nullable|string',
         ]);
 
-        $imagePath = null;
-        if ($request->hasFile('cover_image')) {
-            $imagePath = $request->file('cover_image')->store('books', 'public');
-            $validated['cover_image'] = $imagePath;
-        }
-
-        \App\Models\Book::create($validated);
-
+        // Зураг upload хийх тусдаа функц
+        $validated['cover_image'] = $this->handleImageUpload($request);
 
         Book::create($validated);
 
@@ -64,10 +58,8 @@ class BookController extends Controller
             'description' => 'nullable|string',
         ]);
 
-        if ($request->hasFile('cover_image')) {
-            $imagePath = $request->file('cover_image')->store('books', 'public');
-            $validated['cover_image'] = $imagePath;
-        }
+        // Зураг upload хийх, хуучин зураг устгах
+        $validated['cover_image'] = $this->handleImageUpload($request, $book);
 
         $book->update($validated);
 
@@ -76,7 +68,27 @@ class BookController extends Controller
 
     public function destroy(Book $book)
     {
+        // Зураг устгах (хэрвээ байгаа бол)
+        if ($book->cover_image && Storage::disk('public')->exists($book->cover_image)) {
+            Storage::disk('public')->delete($book->cover_image);
+        }
         $book->delete();
         return redirect()->route('admin.books.index')->with('success', 'Ном устгагдлаа!');
+    }
+
+    /**
+     * Зураг upload хийх, update үед хуучин зургийг устгах
+     */
+    protected function handleImageUpload(Request $request, Book $book = null)
+    {
+        if ($request->hasFile('cover_image')) {
+            // Хэрвээ update бол хуучин зураг устгах
+            if ($book && $book->cover_image && Storage::disk('public')->exists($book->cover_image)) {
+                Storage::disk('public')->delete($book->cover_image);
+            }
+            return $request->file('cover_image')->store('books', 'public');
+        }
+        // Update үед зураггүй бол хуучин зургийг хадгална
+        return $book ? $book->cover_image : null;
     }
 }

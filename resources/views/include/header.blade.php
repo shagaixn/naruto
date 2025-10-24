@@ -77,28 +77,44 @@ button {
     type="text" 
     class="search-input" 
     placeholder="Ном хайх..." 
-    autocomplete="off"
-    
+    autocomplete="off" 
   >
   <svg class="absolute" style="left: 0.75rem; top: 0.7rem; width: 1.25rem; height: 1.25rem; color: #9ca3af; pointer-events: none;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1016.65 16.65z" />
   </svg>
 </div>
-      <button class="text-blue-600 font-semibold flex items-center gap-2">
-        <svg class="w-6 h-6 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <circle cx="12" cy="12" r="10" stroke-width="2" stroke="currentColor" fill="none"/>
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 16v-4m0-4h.01" />
-        </svg>
-        Нэвтрэх
-      </button>
+       @auth
+        <a href="{{ route('profile') }}"
+           class="text-blue-600 font-semibold flex items-center gap-2">
+            <svg class="w-6 h-6 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <circle cx="12" cy="12" r="10" stroke-width="2" stroke="currentColor" fill="none"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 16v-4m0-4h.01" />
+            </svg>
+            Профайл
+        </a>
+        <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <button type="submit" class="text-red-600 font-semibold ml-4">Гарах</button>
+        </form>
+    @else
+        <a href="{{ route('login') }}"
+           class="text-blue-600 font-semibold flex items-center gap-2">
+            <svg class="w-6 h-6 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <circle cx="12" cy="12" r="10" stroke-width="2" stroke="currentColor" fill="none"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 16v-4m0-4h.01" />
+            </svg>
+            Нэвтрэх
+        </a>
+    @endauth
+</div>
     </div>
   </div>
   <nav class="max-w-7xl mx-auto px-8 mt-4 flex items-center gap-8 text-gray-700 font-medium">
-    <a href="#" class="px-2 py-1 rounded-full transition hover:bg-blue-50 hover:text-blue-600 text-blue-600 font-semibold">Танд зориулав</a>
+    <a href="{{ route('home') }}" class="px-2 py-1 rounded-full transition hover:bg-blue-50 hover:text-blue-600 text-blue-600 font-semibold">Танд зориулав</a>
     <a href="#" class="px-2 py-1 rounded-full transition hover:bg-blue-50 hover:text-blue-600">Аймшгийн баяр <span class="ml-1">🎃</span></a>
-    <a href="#" class="px-2 py-1 rounded-full transition hover:bg-blue-50 hover:text-blue-600">Ном</a>
-    <a href="#" class="px-2 py-1 rounded-full transition hover:bg-blue-50 hover:text-blue-600">Subscription</a>
-    <a href="#" class="px-2 py-1 rounded-full transition hover:bg-blue-50 hover:text-blue-600">Подкаст</a>
-    <a href="#" class="px-2 py-1 rounded-full transition hover:bg-blue-50 hover:text-blue-600">Үйлчилгээ</a>
-  </nav>
+    <a href="{{ route('book') }}" class="px-2 py-1 rounded-full transition hover:bg-blue-50 hover:text-blue-600">Ном</a>
+    <a href="{{ route('subscription') }}" class="px-2 py-1 rounded-full transition hover:bg-blue-50 hover:text-blue-600">Subscription</a>
+    <a href="" class="px-2 py-1 rounded-full transition hover:bg-blue-50 hover:text-blue-600">Зохиолчид</a>
+
+</nav>
 </header>

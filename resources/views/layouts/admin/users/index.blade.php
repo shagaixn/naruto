@@ -3,8 +3,8 @@
 @section('content')
 <div class="max-w-5xl mx-auto p-6 bg-gray-100">
     <div class="flex justify-between items-center mb-6">
-        <h1 class="text-2xl font-bold">👥 Хэрэглэгчид</h1>
-        <a href="{{ route('admin.users.create') }}" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">➕ Шинэ хэрэглэгч</a>
+        <h1 class="text-2xl font-bold">👥 Бүртгэлтэй хэрэглэгчид</h1>
+            
     </div>
 
     @if(session('success'))
@@ -17,8 +17,10 @@
         <thead class="bg-blue-50 border-b">
             <tr>
                 <th class="text-left py-3 px-4">#</th>
+                <th class="text-left py-3 px-4">ID</th>
                 <th class="text-left py-3 px-4">Нэр</th>
                 <th class="text-left py-3 px-4">Имэйл</th>
+                <th class="text-left py-3 px-4">Role</th>
                 <th class="text-left py-3 px-4">Үйлдэл</th>
             </tr>
         </thead>
@@ -26,14 +28,15 @@
             @foreach($users as $user)
             <tr class="border-b hover:bg-blue-50">
                 <td class="py-3 px-4">{{ $loop->iteration }}</td>
+                <td class="py-3 px-4">{{ $user->id }}</td>
                 <td class="py-3 px-4">{{ $user->name }}</td>
                 <td class="py-3 px-4">{{ $user->email }}</td>
+                <td class="py-3 px-4">{{ $user->role }}</td>
                 <td class="py-3 px-4">
-                    <a href="{{ route('users.edit', $user) }}" class="text-blue-600 hover:underline">Засах</a> |
-                    <form action="{{ route('users.destroy', $user) }}" method="POST" class="inline">
+                    
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="text-red-600 hover:underline" onclick="return confirm('Та энэ хэрэглэгчийг устгахыг хүсч байна уу?')">Устгах</button>
+                        
                     </form>
                 </td>
             </tr>

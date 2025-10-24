@@ -1,5 +1,13 @@
 @include('include.header')
 
+
+@section('content')
+<div class="max-w-2xl mx-auto mt-16 bg-white p-8 rounded shadow">
+    <h2 class="text-2xl font-bold mb-4">Тавтай морил!</h2>
+    <p>Та амжилттай Нэвтэрлээ!</p>
+</div>
+@endsection
+
     <!-- Main Section -->
     <main class="flex flex-col items-center justify-center text-center py-20 px-4">
         <h1 class="text-4xl font-bold mb-4 tracking-tight">

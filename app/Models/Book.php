@@ -22,4 +22,5 @@ class Book extends Model
         'pages',
         'description',
     ];
+    protected $guarded = [];
 }
