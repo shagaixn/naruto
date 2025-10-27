@@ -25,25 +25,21 @@ class LoginController extends Controller
             'password' => 'required',
         ]);
 
-        if (Auth::attempt($credentials)) {
+        // Хэрвээ remember checkbox байгаа бол request-д include хийгээрэй: $request->has('remember')
+        $remember = $request->boolean('remember', false);
+
+        if (Auth::attempt($credentials, $remember)) {
+            // session-ийг regenerate хийж session fixation-оос хамгаална
             $request->session()->regenerate();
-            return redirect()->intended('home')->with('success', 'Амжилттай нэвтэрлээ!');
+
+            // redirect intended буюу хүсч байсан хаяг руу, эсвэл profile руу
+            return redirect()->intended('/profile')->with('success', 'Амжилттай нэвтэрлээ!');
         }
 
         return back()->withErrors([
             'email' => 'Имэйл эсвэл нууц үг буруу байна.',
         ])->onlyInput('email');
     }
-    public function login(Request $request)
-{
-    $credentials = $request->only('email', 'password');
-    if (Auth::attempt($credentials)) {
-        return redirect()->intended('/profile'); // /profile руу шууд очно
-    }
-    return back()->withErrors([
-        'email' => 'Имэйл эсвэл нууц үг буруу байна',
-    ]);
-}
 
     /**
      * Хэрэглэгч гаргах
@@ -51,8 +47,10 @@ class LoginController extends Controller
     public function logout(Request $request)
     {
         Auth::logout();
+
         $request->session()->invalidate();
         $request->session()->regenerateToken();
+
         return redirect('/home')->with('success', 'Амжилттай гарлаа!');
     }
 }

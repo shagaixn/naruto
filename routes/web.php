@@ -29,9 +29,9 @@ Route::get('/', function () {
 
         Route::get('/register', [RegisterController::class, 'showRegisterForm'])->name('register');
         Route::post('/register', [RegisterController::class, 'register']);
-        // Route::get('/profile', [ProfileController::class, 'show']);
-        // Route::post('/profile', [ProfileController::class, 'update']);
-        // Route::get('/profile', [ProfileController::class, 'show']);
+        Route::get('/profile', [ProfileController::class, 'show'])
+        ->name('profile')
+        ->middleware('auth');
 
         // social login
         Route::get('login/facebook', [SocialController::class, 'redirectToFacebook'])->name('login.facebook');
