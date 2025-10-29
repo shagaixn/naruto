@@ -66,9 +66,8 @@
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between px-8">
       <p class="text-gray-500 text-sm mb-3 md:mb-0">Биднийг сошиал сүлжээнд дагаарай</p>
       <div class="flex space-x-4">
-        <a href="#" class="text-gray-500 hover:text-blue-600 text-xl"><i class="fab fa-facebook"></i></a>
-        <a href="#" class="text-gray-500 hover:text-pink-500 text-xl"><i class="fab fa-instagram"></i></a>
-        <a href="#" class="text-gray-500 hover:text-black text-xl"><i class="fab fa-tiktok"></i></a>
+        <a href="https://www.facebook.com/" class="text-gray-500 hover:text-blue-600 text-xl"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.instagram.com/" class="text-gray-500 hover:text-pink-500 text-xl"><i class="fab fa-instagram"></i></a>
         <a href="#" class="text-gray-500 hover:text-red-600 text-xl"><i class="fab fa-youtube"></i></a>
         <a href="#" class="text-gray-500 hover:text-blue-700 text-xl"><i class="fab fa-linkedin"></i></a>
       </div>

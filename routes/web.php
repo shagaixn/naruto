@@ -20,6 +20,9 @@ Route::get('/', function () {
         Route::get('/home', [HomeController::class, 'home'])->name('home');
         Route::get('/book', [HomeController::class, 'book'])->name('book');
         Route::get('/subscription', [HomeController::class, 'subscription'])->name('subscription');
+
+        // routes/web.php
+        Route::get('/books/{id}', [BookController::class, 'show'])->name('books.show');
     
         // login/logout
         
@@ -29,9 +32,9 @@ Route::get('/', function () {
 
         Route::get('/register', [RegisterController::class, 'showRegisterForm'])->name('register');
         Route::post('/register', [RegisterController::class, 'register']);
-        Route::get('/profile', [ProfileController::class, 'show'])
-        ->name('profile')
-        ->middleware('auth');
+        // Route::get('/profile', [ProfileController::class, 'show'])
+        // ->name('profile')
+        // ->middleware('auth');
 
         // social login
         Route::get('login/facebook', [SocialController::class, 'redirectToFacebook'])->name('login.facebook');

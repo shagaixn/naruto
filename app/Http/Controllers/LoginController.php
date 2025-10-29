@@ -33,7 +33,7 @@ class LoginController extends Controller
             $request->session()->regenerate();
 
             // redirect intended буюу хүсч байсан хаяг руу, эсвэл profile руу
-            return redirect()->intended('/profile')->with('success', 'Амжилттай нэвтэрлээ!');
+            return redirect()->intended('/home')->with('success', 'Амжилттай нэвтэрлээ!');
         }
 
         return back()->withErrors([

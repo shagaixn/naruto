@@ -1,4 +1,4 @@
-@include('include.header')
+{{-- @include('include.header')
 
 <div class="max-w-md mx-auto mt-16 bg-white p-8 rounded shadow">
     <h2 class="text-2xl font-bold mb-6 text-center">Профайл</h2>
@@ -12,4 +12,4 @@
     @endif
 </div>
 
-@include('include.footer')
+@include('include.footer') --}}

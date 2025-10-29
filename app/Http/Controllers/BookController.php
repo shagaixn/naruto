@@ -18,6 +18,13 @@ class BookController extends Controller
     {
         return view('layouts.admin.books.create');
     }
+    // app/Http/Controllers/BookController.php
+
+    public function show($id)
+    {
+        $book = Book::findOrFail($id);
+        return view('books.show', compact('book'));
+    }
 
     public function store(Request $request)
     {

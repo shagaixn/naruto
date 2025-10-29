@@ -8,14 +8,16 @@
                 @if($book->cover)
                     <img src="{{ asset('storage/' . $book->cover) }}" alt="{{ $book->title }}" class="w-40 h-56 object-cover rounded-lg mb-4">
                 @else
+                
                     <div class="w-40 h-56 bg-blue-100 flex items-center justify-center rounded-lg mb-4 text-gray-400">
                         No Image
                     </div>
                 @endif
                 <h2 class="text-2xl font-semibold mb-2 text-blue-600">{{ $book->title }}</h2>
                 <p class="text-gray-700 font-medium mb-1">Зохиолч: {{ $book->author }}</p>
-                <p class="text-gray-500 text-sm mb-3">{{ $book->description }}</p>
-                <a href="#" class="mt-auto bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition">Дэлгэрэнгүй</a>
+               
+                <a href="{{ route('books.show', $book->id) }}" class="mt-auto bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition">Дэлгэрэнгүй</a>
+                
             </div>
         @empty
             <div class="col-span-3 text-center text-gray-400">

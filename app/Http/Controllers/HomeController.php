@@ -18,7 +18,7 @@ class HomeController extends Controller
     }
     public function book()
     {
-        $books = Book::latest()->paginate(12); // эсвэл Book::all() гэх мэт
+        $books = Book::all(); // эсвэл Book::all() гэх мэт
         return view('pages.Book', compact('books'));
     }
     public function home()
