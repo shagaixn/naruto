@@ -13,12 +13,13 @@ class AdminMiddleware
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle($request, Closure $next)
+    // app/Http/Middleware/IsAdmin.php
+public function handle($request, Closure $next)
 {
-    // if (auth()->check() && auth()->user()->role === 'admin') {
-    //     return $next($request);
-    // }
-    // abort(403, 'Хандах эрхгүй байна');
+    if (auth()->check() && auth()->user()->role === 'admin') {
+        return $next($request);
+    }
+    abort(403, 'Зөвшөөрөгдөөгүй');
 }
 
 }

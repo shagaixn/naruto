@@ -23,6 +23,8 @@ Route::get('/', function () {
 
         // routes/web.php
         Route::get('/books/{id}', [BookController::class, 'show'])->name('books.show');
+
+        
     
         // login/logout
         
