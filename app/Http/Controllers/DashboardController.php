@@ -12,7 +12,18 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('admin.dashboard');
+        public function index()
+    {
+    $categories = \App\Models\BookCategory::withCount('books')->get();
+
+    $categoryLabels = $categories->pluck('name');
+    $categoryCounts = $categories->pluck('books_count');
+
+    return view('layouts.admin', [
+        'categoryLabels' => $categoryLabels,
+        'categoryCounts' => $categoryCounts,
+    ]);
+    }
     }
 
     /**

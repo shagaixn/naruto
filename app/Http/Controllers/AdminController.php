@@ -6,6 +6,7 @@ use App\Models\admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\BookController;
 use App\Models\User;
+use App\Models\Book;
 
 class AdminController extends Controller
 {
@@ -14,11 +15,18 @@ class AdminController extends Controller
      */
     public function index()
     {
-        // $totalUsers = User::count();
-        // $totalBooks = Book::count(); // 📚 Нийт номын тоо
+        $totalUsers = User::count();
+        $totalBooks = Book::count(); // 📚 Нийт номын тоо
 
-        return view('layouts.admin');
+        return view('layouts.admin', compact('totalUsers', 'totalBooks'));
     }
+    public function logout(Request $request)
+{
+    Auth::logout();
+    $request->session()->invalidate();
+    $request->session()->regenerateToken();
+    return redirect('/home')->with('success', 'Амжилттай гарлаа!');
+}
 
     /**
      * Show the form for creating a new resource.

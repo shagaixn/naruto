@@ -7,6 +7,15 @@
     <p>Та амжилттай Нэвтэрлээ!</p>
 </div>
 @endsection
+<style>@keyframes marquee {
+  0% { transform: translateX(0%);}
+  100% { transform: translateX(-50%);}
+}
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 20s linear infinite;
+}</style>
 
     <!-- Main Section -->
     <main class="flex flex-col items-center justify-center text-center py-20 px-4">
@@ -37,29 +46,23 @@
         </p>
     </main>
     <section id="testimonials">
-  <h2>Хэрэглэгчдийн <strong>сэтгэгдэл</strong></h2>
+      
 
-  <div  class="testimonial-container">
-    <div class="testimonial active">
-      <p>“Номоо их сайн, бас сонсож хэлбэрээр ч сонсдог болсонд баяртай байна.”</p>
-      <h4>Сараа</h4>
-    </div>
-
-    <div class="testimonial">
-      <p>“Амьдралыг минь өөрчилсөн хүчирхэг ном оруулсан Mbook-д баярлалаа.”</p>
-      <h4>Мөнхсайхан</h4>
-    </div>
-
-    <div class="testimonial">
-      <p>“Үнэхээр гоё апп байна, хэрэглэхэд амархан.”</p>
-      <h4>Амаа</h4>
-    </div>
+  <div class="relative w-full overflow-hidden bg-gray-900 py-6">
+  <div class="animate-marquee whitespace-nowrap flex">
+    <span class="mx-8 text-2xl text-white font-bold">📚 Book 1</span>
+    <span class="mx-8 text-2xl text-white font-bold">📕 Book 2</span>
+    <span class="mx-8 text-2xl text-white font-bold">📖 Book 3</span>
+    <span class="mx-8 text-2xl text-white font-bold">📙 Book 4</span>
+    <span class="mx-8 text-2xl text-white font-bold">📘 Book 5</span>
+    <!-- Дахин эхлэх үгнүүдийг давхардуулж бичих -->
+    <span class="mx-8 text-2xl text-white font-bold">📚 Book 1</span>
+    <span class="mx-8 text-2xl text-white font-bold">📕 Book 2</span>
+    <span class="mx-8 text-2xl text-white font-bold">📖 Book 3</span>
+    <span class="mx-8 text-2xl text-white font-bold">📙 Book 4</span>
+    <span class="mx-8 text-2xl text-white font-bold">📘 Book 5</span>
   </div>
-
-  <div class="controls">
-    <button id="prev">←</button>
-    <button id="next">→</button>
-  </div>
+</div>
 </section>
 <script>
   const testimonials = document.querySelectorAll('.testimonial');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Book;
+use App\Models\BookCategory;
 use Illuminate\Support\Facades\Storage;
 
 class BookController extends Controller
@@ -15,9 +16,11 @@ class BookController extends Controller
     }
 
     public function create()
-    {
-        return view('layouts.admin.books.create');
-    }
+{
+    $categories = BookCategory::all();
+    return view('layouts.admin.books.create', compact('categories'));
+}
+
     // app/Http/Controllers/BookController.php
 
     public function show($id)
@@ -27,25 +30,35 @@ class BookController extends Controller
     }
 
     public function store(Request $request)
-    {
-        $validated = $request->validate([
-            'title' => 'required|string|max:255',
-            'author' => 'required|string|max:255',
-            'category' => 'nullable|string|max:255',
-            'cover_image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
-            'published_date' => 'nullable|date',
-            'price' => 'required|integer|min:0',
-            'pages' => 'nullable|integer|min:1',
-            'description' => 'nullable|string',
-        ]);
+{
+    $validated = $request->validate([
+        'title' => 'required|string|max:255',
+        'author' => 'required|string|max:255',
+        'category_name' => 'required|string|max:255',
+        'published_date' => 'required|date',
+        'price' => 'required|numeric',
+        'pages' => 'required|numeric',
+        'description' => 'required|string',
+        'cover_image' => 'nullable|image|max:2048',
+    ]);
 
-        // Зураг upload хийх тусдаа функц
+    // Категорийг үүсгэх буюу авах
+    $category = \App\Models\BookCategory::firstOrCreate([
+        'name' => $request->category_name
+    ]);
+
+    $validated['category_id'] = $category->id;
+    unset($validated['category_name']); // category_name-г массив-аас хасна
+
+    // Зураг upload хийж байгаа бол
+    if ($request->hasFile('cover_image')) {
         $validated['cover_image'] = $this->handleImageUpload($request);
-
-        Book::create($validated);
-
-        return redirect()->route('admin.books.index')->with('success', 'Ном амжилттай нэмэгдлээ!');
     }
+
+    \App\Models\Book::create($validated);
+
+    return redirect()->route('admin.books.index')->with('success', 'Ном амжилттай нэмэгдлээ!');
+}
 
     public function edit(Book $book)
     {

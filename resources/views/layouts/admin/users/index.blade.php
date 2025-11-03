@@ -21,7 +21,7 @@
                 <th class="text-left py-3 px-4">Нэр</th>
                 <th class="text-left py-3 px-4">Имэйл</th>
                 <th class="text-left py-3 px-4">Role</th>
-                <th class="text-left py-3 px-4">Үйлдэл</th>
+                
             </tr>
         </thead>
         <tbody>

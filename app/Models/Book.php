@@ -16,6 +16,7 @@ class Book extends Model
         'title',
         'author',
         'category',
+        'category_id',
         'cover_image',
         'published_date',
         'price',
@@ -23,4 +24,9 @@ class Book extends Model
         'description',
     ];
     protected $guarded = [];
+
+        public function category()
+    {
+        return $this->belongsTo(BookCategory::class, 'category_id');
+    }
 }

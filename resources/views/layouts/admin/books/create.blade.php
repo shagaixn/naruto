@@ -21,11 +21,16 @@
              class="w-full border-gray-300 rounded-lg shadow-sm focus:ring-blue-200 focus:border-blue-500">
     </div>
 
-    <div>
-      <label class="block font-medium text-gray-700 mb-1">Ангилал</label>
-      <input type="text" name="category" value="{{ old('category') }}"
-             class="w-full border-gray-300 rounded-lg shadow-sm focus:ring-blue-200 focus:border-blue-500">
-    </div>
+   <div>
+    <label for="category_name">Ангилал:</label>
+    <input type="text" name="category_name" id="category_name" required list="category-list" value="{{ old('category_name') }}"
+           class="w-full border-gray-300 rounded-lg shadow-sm focus:ring-blue-200 focus:border-blue-500">
+    <datalist id="category-list">
+        @foreach($categories as $category)
+            <option value="{{ $category->name }}">
+        @endforeach
+    </datalist>
+</div>
 
     <div>
       <label class="block font-medium text-gray-700 mb-1">Хэвлэгдсэн огноо</label>

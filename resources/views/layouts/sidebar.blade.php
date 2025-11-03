@@ -32,7 +32,13 @@
             <a href="{{ route('admin.users.index') }}" class="block px-6 py-3 text-gray-700 hover:bg-blue-100">👥 Хэрэглэгчид</a>
             <a href="{{ route('admin.books.index') }}" class="block px-6 py-3 text-gray-700 hover:bg-blue-100">📚 Номнууд</a>
             <a href="" class="block px-6 py-3 text-gray-700 hover:bg-blue-100">⚙️ Тохиргоо</a>
-            <a href="#" class="block px-6 py-3 text-gray-700 hover:bg-blue-100 border-t mt-4">🚪 Гарах</a>
+           <!-- resources/views/layouts/sidebar.blade.php -->
+<form method="POST" action="{{ route('logout') }}">
+    @csrf
+    <button type="submit" class="block w-full text-left px-6 py-3 text-gray-700 hover:bg-blue-100 border-t mt-4">
+        🚪 Гарах
+    </button>
+</form>
         </nav>
     </aside>
 

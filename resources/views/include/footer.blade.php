@@ -14,26 +14,26 @@
 
     <!-- Column 2: Бүтээл нийтлэх -->
     <div>
-    @if(auth()->check() && auth()->user()->role === 'admin')
-    <h3 class="font-semibold text-gray-800 mb-3">Бүтээл нийтлэх</h3>
-    <button
-        onclick="window.location='{{ route('layouts.admin') }}'"
-        class="flex items-center justify-center gap-2 bg-blue-600 text-white py-2 px-5 rounded-lg hover:bg-blue-700 transition-all"
-        type="button"
-    >
-        <span>Бүтээл нийтлэх</span>
-        <span class="text-lg font-bold">+</span>
-    </button>
-    @endif
-      
-      <button class="flex items-center justify-center gap-2 bg-blue-600 text-white py-2 px-5 rounded-lg hover:bg-blue-700 transition-all">
-        <span>Бүтээл нийтлэх</span>
-        <span class="text-lg font-bold">+</span>
-       
+  <h3 class="font-semibold text-gray-800 mb-3">Бүтээл нийтлэх</h3>
+  @if(auth()->check() && auth()->user()->role === 'admin')
+      <a href="{{ route('admin.dashboard') }}"
+         class="flex items-center justify-center gap-2 bg-blue-600 text-white py-2 px-5 rounded-lg hover:bg-blue-700 transition-all"
+         style="text-decoration: none;">
+          <span>Бүтээл нийтлэх</span>
+          <span class="text-lg font-bold">+</span>
+      </a>
+  @else
+      <button
+          class="flex items-center justify-center gap-2 bg-blue-300 text-white py-2 px-5 rounded-lg opacity-60 cursor-not-allowed"
+          type="button"
+          disabled
+      >
+          <span>Бүтээл нийтлэх</span>
+          <span class="text-lg font-bold">+</span>
       </button>
-      <p class="mt-2 text-gray-500">Таны нийтэлсэн бүтээлийг уншигч, сонсогчдод хил хязгааргүй хүргэнэ</p>
-      
-    </div>
+  @endif
+  <p class="mt-2 text-gray-500">Таны нийтэлсэн бүтээлийг уншигч, сонсогчдод хил хязгааргүй хүргэнэ</p>
+</div>  
 
     <!-- Column 3: Бидний тухай -->
     <div>

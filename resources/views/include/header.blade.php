@@ -35,6 +35,7 @@
     <script src="https://instant.page/5.2.0" type="module"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
 
     <style>
       /* Default (light) */
@@ -73,38 +74,6 @@ body.dark .nav-link:hover {
   background: #334155;
   color: #60a5fa;
 }
-      /* body { font-family: 'Inter', sans-serif; }
-      
-
-      #testimonials {
-        text-align: center;
-        background: #f5f9ff;
-        padding: 40px 20px;
-      }
-
-      .testimonial-container {
-        position: relative;
-        max-width: 700px;
-        margin: 0 auto;
-        overflow: hidden;
-      }
-
-      .testimonial {
-        display: none;
-        opacity: 0;
-        transition: opacity 0.6s ease;
-      }
-
-      .testimonial.active {
-        display: block;
-        opacity: 1;
-      }
-
-      .controls {
-        margin-top: 20px;
-      }
-
-      /* Testimonials-ын товчлууруудад л үйлчилнэ (глобал button-г хориглоно) */
       #testimonials .controls button {
         background: #007bff;
         border: none;
@@ -114,7 +83,6 @@ body.dark .nav-link:hover {
         border-radius: 8px;
         cursor: pointer;
       }
-
       .search-input {
         width: 18rem;
         padding: 0.5rem 1rem 0.5rem 2.5rem;
@@ -162,13 +130,26 @@ body.dark footer {
   background: #1e293b;
   color: #e5e7eb;
 }  --
-/* .dark .search-input, .dark .btn, .dark .card г.м бусад элемент */
+body.pt {
+  transition: background-color 0.3s, color 0.3s;
+}
+header {
+  background-image: url('/images/bookshelves.jpg');
+  background-repeat: repeat;
+  background-size: auto;
+  background-position: center;
+}
+body.dark header {
+  background-image: url('/images/bookshelves.jpg');
+  filter: brightness(0.7);
+}
+
     </style>
 </head>
 <body class="bg-gradient-to-b from-[#f6f9ff] to-white dark:from-slate-950 dark:to-slate-900 min-h-screen text-slate-800 dark:text-slate-100">
   
   <!-- Header -->
-  <header class="bg-white dark:bg-slate-900 border-b border-gray-100 dark:border-slate-800 px-0 pt-4 pb-2">
+  <header class="dark:bg-slate-900 border-b border-gray-100 dark:border-slate-800 px-0 pt-4 pb-2">
     <div class="max-w-7xl mx-auto flex items-center justify-between px-8">
       <div class="flex items-center gap-2">
         <a href="pages.home"><span class="text-2xl font-bold text-blue-600">M</span>

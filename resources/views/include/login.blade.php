@@ -19,16 +19,28 @@
             @enderror
         </div>
         <button type="submit" class="bg-blue-600 w-full py-2 text-white rounded font-bold hover:bg-blue-700">Нэвтрэх</button>
-    </form>
-    <div class="mt-4 text-center">
-        <a href="{{ route('register') }}" class="text-blue-600 hover:underline">Бүртгүүлэх</a>
-        <a href="{{ route('login.facebook') }}" class="bg-blue-600 text-white px-4 py-2 rounded block mb-2 text-center">
-    Facebook-ээр нэвтрэх
-</a>
-<a href="{{ route('login.instagram') }}" class="bg-pink-600 text-white px-4 py-2 rounded block mb-4 text-center">
-    Instagram-ээр нэвтрэх
-</a>
-    </div>
+        <div class="mt-4 text-center">
+    <a href="{{ route('register') }}" class="text-blue-600 hover:underline">Бүртгүүлэх</a>
 </div>
+    </form>
+    <div class="mt-8 flex justify-center gap-4">
+    <!-- Facebook -->
+    <a href="#" class="group relative w-12 h-12 flex items-center justify-center">
+        <span class="absolute inset-0 border border-blue-500 rounded-lg group-hover:rotate-[-12deg] group-hover:skew-y-3 transition-transform duration-300"></span>
+        <span class="text-blue-500 text-xl z-10"><i class="fab fa-facebook-f"></i></span>
+    </a>
+    <!-- Twitter -->
+    <a href="#" class="group relative w-12 h-12 flex items-center justify-center">
+        <span class="absolute inset-0 border border-sky-400 rounded-lg group-hover:rotate-[-12deg] group-hover:skew-y-3 transition-transform duration-300"></span>
+        <span class="text-sky-400 text-xl z-10"><i class="fab fa-twitter"></i></span>
+    </a>
+    <!-- Instagram -->
+    <a href="#" class="group relative w-12 h-12 flex items-center justify-center">
+        <span class="absolute inset-0 border border-pink-500 rounded-lg group-hover:rotate-[-12deg] group-hover:skew-y-3 transition-transform duration-300"></span>
+        <span class="text-pink-500 text-xl z-10"><i class="fab fa-instagram"></i></span>
+    </a>
+</div>
+</div>
+
 
 @include('include.footer')

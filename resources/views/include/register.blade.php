@@ -39,6 +39,24 @@
     <div class="mt-4 text-center">
         <a href="{{ route('login') }}" class="text-blue-600 hover:underline">Нэвтрэх</a>
     </div>
+    <div class="mt-8 flex justify-center gap-4">
+    <!-- Facebook -->
+    <a href="#" class="group relative w-12 h-12 flex items-center justify-center">
+        <span class="absolute inset-0 border border-blue-500 rounded-lg group-hover:rotate-[-12deg] group-hover:skew-y-3 transition-transform duration-300"></span>
+        <span class="text-blue-500 text-xl z-10"><i class="fab fa-facebook-f"></i></span>
+    </a>
+    <!-- Twitter -->
+    <a href="#" class="group relative w-12 h-12 flex items-center justify-center">
+        <span class="absolute inset-0 border border-sky-400 rounded-lg group-hover:rotate-[-12deg] group-hover:skew-y-3 transition-transform duration-300"></span>
+        <span class="text-sky-400 text-xl z-10"><i class="fab fa-twitter"></i></span>
+    </a>
+    <!-- Instagram -->
+    <a href="#" class="group relative w-12 h-12 flex items-center justify-center">
+        <span class="absolute inset-0 border border-pink-500 rounded-lg group-hover:rotate-[-12deg] group-hover:skew-y-3 transition-transform duration-300"></span>
+        <span class="text-pink-500 text-xl z-10"><i class="fab fa-instagram"></i></span>
+    </a>
+
+</div>
 </div>
 
 @include('include.footer')

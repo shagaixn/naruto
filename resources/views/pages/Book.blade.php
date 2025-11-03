@@ -1,21 +1,23 @@
 @include('include.header')
-<!-- Main Section -->
 <main class="max-w-7xl mx-auto py-12 px-4">
     <h1 class="text-4xl font-bold mb-8 text-blue-700 text-center">Номуудын жагсаалт</h1>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="flex flex-wrap justify-center gap-8 group">
         @forelse ($books as $book)
-            <div class="bg-white rounded-xl shadow-md p-4 flex flex-row items-center space-x-4">
+            <div class="relative w-48 h-72 rounded-2xl overflow-hidden shadow-xl bg-white cursor-pointer group/book transition-all duration-300">
                 @if($book->cover_image)
-                    <img src="{{ asset('storage/' . $book->cover_image) }}" alt="{{ $book->title }}" class="w-20 h-28 object-cover rounded-md">
+                    <img src="{{ asset('storage/' . $book->cover_image) }}"
+                         alt="{{ $book->title }}"
+                         class="w-full h-full object-cover transition-all duration-500 group-hover:blur-sm group-hover:brightness-75 group-hover/book:!blur-none group-hover/book:!brightness-100" />
                 @else
-                    <div class="w-20 h-28 bg-blue-100 flex items-center justify-center rounded-md text-gray-400 text-xs">
+                    <div class="w-full h-full bg-blue-100 flex items-center justify-center rounded-2xl text-gray-400 text-xs">
                         No Image
                     </div>
                 @endif
-                <div class="flex flex-col flex-1 min-w-0">
-                    <h2 class="text-lg font-semibold text-blue-600 truncate">{{ $book->title }}</h2>
-                    <p class="text-gray-700 font-medium text-sm mb-2 truncate">Зохиолч: {{ $book->author }}</p>
-                    <a href="{{ route('books.show', $book->id) }}" class="mt-auto inline-block bg-blue-600 text-white px-4 py-1 rounded-full hover:bg-blue-700 transition text-xs">Дэлгэрэнгүй</a>
+                <div class="absolute inset-0 flex flex-col justify-end opacity-0 group-hover/book:opacity-100 transition duration-300 bg-gradient-to-t from-[#0f0c24]/90 via-transparent to-transparent p-4">
+                    <h2 class="text-xl font-bold mb-2 text-white">{{ $book->title }}</h2>
+                    <p class="text-white mb-2 line-clamp-2 text-sm">Зохиолч: {{ $book->author }}</p>
+                    <a href="{{ route('books.show', $book->id) }}"
+                       class="bg-[#5f31ff] hover:bg-[#4223b6] text-white px-4 py-1.5 rounded-lg font-semibold text-xs w-fit">Дэлгэрэнгүй</a>
                 </div>
             </div>
         @empty
